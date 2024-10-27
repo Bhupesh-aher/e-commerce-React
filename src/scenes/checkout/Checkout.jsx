@@ -89,6 +89,7 @@ const checkoutSchema = [
 
 const Checkout = () => {
    
+  const apiUrl = process.env.REACT_APP_API_URL;
     const [activeStep, setActiveStep] = useState(0)
     const cart = useSelector((state) => state.cart.cart)
     const isFirstStep = activeStep === 0;
@@ -124,11 +125,19 @@ const Checkout = () => {
         }))
       };
 
-      const response = await fetch("http://localhost:1337/api/orders", {
+      console.log("Request body:", requestBody); 
+
+      const response = await fetch(`${apiUrl}/api/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(requestBody),
       });
+
+      if (!response.ok) {
+        const errorText = await response.text(); // Get the error message
+        console.error("Error response:", errorText); // Log the error message
+        return; // Stop further processing
+    }
       const session = await response.json();
       await stripe.redirectToCheckout({
         sessionId: session.id,

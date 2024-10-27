@@ -12,6 +12,7 @@ import Item from '../../components/Item'
 import { useParams } from 'react-router-dom'
 
 const ItemDetails = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const dispatch = useDispatch();
   const {itemID} = useParams();
   const id = useParams();
@@ -21,6 +22,8 @@ const ItemDetails = () => {
   const [items, setItems] = useState([]);
   // console.log(itemId);
   console.log(id);
+
+  
   
   
  
@@ -33,7 +36,7 @@ const ItemDetails = () => {
   // particular item
   async function getItem() {
     const item = await fetch(
-      `http://localhost:1337/api/items/${itemID}?populate=image`,
+      `${apiUrl}/api/items/${itemID}?populate=image`,
       {method: "GET"}
     );
     // const item = await fetch(`http://localhost:1337/api/items/${itemID}?populate=image`,
@@ -50,7 +53,7 @@ const ItemDetails = () => {
   // suggested items
   async function getItems() {
     const items = await fetch(
-      "http://localhost:1337/api/items?populate=image",
+      `${apiUrl}/api/items?populate=image`,
       {method: "GET"}
     )
     const itemsJson = await items.json();
@@ -69,7 +72,7 @@ const ItemDetails = () => {
         {/* IMAGES */}
           <Box flex="1 1 40%" mb="40px">
           <img  alt={item?.name} width="100%" height="100%" 
-          src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`} 
+          src={`${apiUrl}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`} 
           style={{objectFit: "contain"}}
           />
 

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 const ShoppigList = () => {
 
+    const apiUrl = process.env.REACT_APP_API_URL;
     const dispatch = useDispatch();
     const [value, setValue] = useState("all")
     const items = useSelector((state)=> state.cart.items)
@@ -21,7 +22,7 @@ const ShoppigList = () => {
 
     async function getItems() {
         const items = await fetch(
-            "http://localhost:1337/api/items?populate=image", 
+            `${apiUrl}/api/items?populate=image`, 
             {method: "GET"}
         );
         const itemsJson = await items.json();

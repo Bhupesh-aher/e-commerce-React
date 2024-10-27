@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom"
 
 const Item = ({item, width}) => {
 
+    const apiUrl = process.env.REACT_APP_API_URL;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [count, setCount] = useState(1);
@@ -40,7 +41,7 @@ const Item = ({item, width}) => {
             <img  alt={item.name}
             width="300px" 
             height="400px"
-            src={`http://localhost:1337${url}`}
+            src={`${apiUrl}${url}`}
             onClick={() => navigate(`/item/${item.id}`)}
             style={{cursor: 'pointer'}}
             />
