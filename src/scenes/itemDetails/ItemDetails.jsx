@@ -37,7 +37,9 @@ const ItemDetails = () => {
   async function getItem() {
     const item = await fetch(
       `${apiUrl}/api/items/${itemID}?populate=image`,
-      {method: "GET"}
+      {method: "GET",
+        credentials: 'include',
+      }
     );
     // const item = await fetch(`http://localhost:1337/api/items/${itemID}?populate=image`,
     //   {method: "GET"}
@@ -54,7 +56,9 @@ const ItemDetails = () => {
   async function getItems() {
     const items = await fetch(
       `${apiUrl}/api/items?populate=image`,
-      {method: "GET"}
+      {method: "GET",
+        credentials: 'include',
+      }
     )
     const itemsJson = await items.json();
     setItems(itemsJson.data);
