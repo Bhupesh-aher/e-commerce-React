@@ -23,10 +23,7 @@ const ShoppigList = () => {
     async function getItems() {
         const items = await fetch(
             `${apiUrl}/api/items?populate=image`, 
-            {method: "GET",
-            credentials: 'include',
-
-            }
+            {method: "GET"}
         );
         const itemsJson = await items.json();
         dispatch(setItems(itemsJson.data));
