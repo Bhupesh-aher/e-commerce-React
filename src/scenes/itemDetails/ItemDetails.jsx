@@ -67,16 +67,21 @@ const ItemDetails = () => {
     getItems();
   }, [itemID]) 
 
+  // Access the Cloudinary URL directly
+  const cloudinaryUrl = item?.attributes?.image?.data?.attributes?.formats?.medium?.url;
+
   return (
     
     <Box width="80%" m="80px auto">
       <Box display="flex" flexWrap="wrap" columnGap="40px">
         {/* IMAGES */}
           <Box flex="1 1 40%" mb="40px">
-          <img  alt={item?.name} width="100%" height="100%" 
-          src={`${apiUrl}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`} 
-          style={{objectFit: "contain"}}
+          {cloudinaryUrl && (
+            <img  alt={item?.name} width="100%" height="100%" 
+            src={cloudinaryUrl}
+            style={{objectFit: "contain"}}
           />
+        )}
 
         </Box>
 

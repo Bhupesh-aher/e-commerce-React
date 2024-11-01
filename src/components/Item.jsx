@@ -21,15 +21,16 @@ const Item = ({item, width}) => {
     } = useTheme();
 
     const { category, price, name, image} = item.attributes;
-    const {
-        data: {
-            attributes: {
-                formats: {
-                    medium: {url},
-                }
-            }
-        }
-    } = image;
+    // const {
+    //     data: {
+    //         attributes: {
+    //             formats: {
+    //                 medium: {url},
+    //             }
+    //         }
+    //     }
+    // } = image;
+    const cloudinaryUrl = image?.data?.attributes?.formats?.medium?.url;
 
   return (
     <Box width={width}>
@@ -41,7 +42,7 @@ const Item = ({item, width}) => {
             <img  alt={item.name}
             width="300px" 
             height="400px"
-            src={`${apiUrl}${url}`}
+            src={cloudinaryUrl}
             onClick={() => navigate(`/item/${item.id}`)}
             style={{cursor: 'pointer'}}
             />

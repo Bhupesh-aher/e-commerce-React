@@ -25,6 +25,8 @@ const ShoppigList = () => {
             `${apiUrl}/api/items?populate=image`, 
             {method: "GET"}
         );
+        console.log(items);
+        
         const itemsJson = await items.json();
         dispatch(setItems(itemsJson.data));
     }
