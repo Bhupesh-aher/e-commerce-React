@@ -19,7 +19,7 @@ const Navbar = () => {
 
             <Box onClick={() => navigate("/")} sx={{'&:hover' : {cursor: "pointer"}}}
               color={shades.secondary[500]}>
-              ECOMMER
+              Cloth X
             </Box>
             <Box display="flex" justifyContent="space-between" columnGap="20px" zIndex="2">
                 <IconButton sx={{color: "black"}}>
