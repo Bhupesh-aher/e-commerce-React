@@ -36,11 +36,11 @@ This platform includes a powerful **headless CMS** powered by **Strapi**, **Stri
 ![Image 2](public/assets/e3-min.png)
 ![Image 3](public/assets/e2-min.png)
 
-
+  
 ## Technologies
 
 - **Frontend**:
-    - **React.js**: For building a fast, interactive user interface.
+    - **React.js**: For building a fast, interactive user interfaces.
     - **Tailwind CSS**: A utility-first CSS framework for a responsive and customizable design.
     - **ShadCN**: Component library for modern UI components, helping maintain consistency in design.
     - **React-Redux**: State management for handling user data and shopping list.
